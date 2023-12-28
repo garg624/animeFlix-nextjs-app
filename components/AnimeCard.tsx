@@ -1,5 +1,4 @@
 import Image from "next/image";
-
 export interface AnimeProp {
   id: string;
   name: string;
@@ -17,12 +16,36 @@ interface Prop {
   index: number;
 }
 
+// format for the api result
+// GET /api/animes
+// 200
+// [
+//   {
+//     "id": 56,
+//     "name": "Test",
+//     "russian": "аниме_56",
+//     "image": {
+//       "original": "/assets/globals/missing_original.jpg",
+//       "preview": "/assets/globals/missing_preview.jpg",
+//       "x96": "/assets/globals/missing_x96.jpg",
+//       "x48": "/assets/globals/missing_x48.jpg"
+//     },
+//     "url": "/animes/56-test",
+//     "kind": "tv",
+//     "score": "8.0",
+//     "status": "released",
+//     "episodes": 0,
+//     "episodes_aired": 0,
+//     "aired_on": "2014-01-01",
+//     "released_on": null
+//   }
+// ]
 function AnimeCard({ anime }: Prop) {
   return (
     <div className="max-w-sm rounded relative w-full">
-      <div className="relative w-full h-[37vh]">
+      <div className="relative w-full h-[49vh] bg-black border-2 rounded-xl">
         <Image
-          src={anime.image.original}
+          src={`https://shikimori.one${anime.image.original}`}
           alt={anime.name}
           fill
           className="rounded-xl"
